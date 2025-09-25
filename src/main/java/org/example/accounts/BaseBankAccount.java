@@ -35,20 +35,7 @@ public class BaseBankAccount {
         return balance;
     }
 
-    public void addBalance(double balance) {
-        if (balance < 0) {
-            throw new IllegalArgumentException("Balance cannot be negative");
-        }
-        this.balance += balance;
-    }
-
-    public void subBalance(double balance) {
-        double finalBalance = this.balance - balance;
-        if(finalBalance <= 0) {
-            throw new IllegalArgumentException("Balance cannot be negative");
-        }
-        else  {
-            this.balance = finalBalance;
-        }
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
