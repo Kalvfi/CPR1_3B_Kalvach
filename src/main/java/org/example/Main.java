@@ -4,7 +4,6 @@ package org.example;
 import org.example.accounts.BaseBankAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.factories.BankAccountFactory;
-import org.example.accounts.generators.AccountNumberGenerator;
 import org.example.accounts.services.AccountService;
 import org.example.persons.customers.Customer;
 
