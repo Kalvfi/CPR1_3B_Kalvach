@@ -2,19 +2,19 @@ package org.example.accounts.services;
 
 import org.example.accounts.BaseBankAccount;
 
-public class AccountService {
+public class AccountBalanceService {
 
     InputValidationService ivs = new InputValidationService();
 
     public void deposit(BaseBankAccount account, double amount) {
-        ivs.checkPositiveAmount(account.getBalance());
-        ivs.checkMaxAmount(account.getBalance());
+        ivs.checkPositiveAmount(amount);
+        ivs.checkMaxAmount(amount);
 
         account.setBalance(account.getBalance() + amount);
     }
 
     public void withdraw(BaseBankAccount account, double amount) {
-        ivs.checkPositiveAmount(account.getBalance());
+        ivs.checkPositiveAmount(amount);
         ivs.checkFinalAmount(account.getBalance(), amount);
 
         account.setBalance(account.getBalance() - amount);
