@@ -1,4 +1,6 @@
-package org.example.persons.customers.serialization;
+package org.example.persons.customers.serialization.factories;
+
+import org.example.persons.customers.serialization.CustomerSerialization;
 
 public class CustomerSerializationFactory {
 

@@ -1,4 +1,6 @@
-package org.example.accounts.cards;
+package org.example.cards.services;
+
+import org.example.cards.PaymentCard;
 
 import java.util.ArrayList;
 import java.util.List;

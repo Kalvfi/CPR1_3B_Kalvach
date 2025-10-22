@@ -1,12 +1,15 @@
-package org.example.persons.customers.serialization;
+package org.example.persons.customers.serialization.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.example.persons.customers.Customer;
+import org.example.persons.customers.serialization.CustomerSerialization;
+import org.example.persons.customers.serialization.factories.CustomerSerializationFactory;
+import org.example.serialization.Serialization;
 
 public class CustomerXmlSerializationService implements Serialization {
 
-    CustomerSerializationFactory csf = new CustomerSerializationFactory();
+    CustomerSerializationFactory customerSerializationFactory = new CustomerSerializationFactory();
 
     XmlMapper xmlMapper = new XmlMapper();
 
@@ -16,16 +19,17 @@ public class CustomerXmlSerializationService implements Serialization {
             throw new IllegalArgumentException("Not a Customer object");
         }
 
-        CustomerSerialization ser = csf.createCustomerSerialization(((Customer) customer).getUuid(),  ((Customer) customer).getFirstName(), ((Customer) customer).getLastName());
+        CustomerSerialization ser = customerSerializationFactory.createCustomerSerialization(((Customer) customer).getUuid(),  ((Customer) customer).getFirstName(), ((Customer) customer).getLastName());
 
+        /*
         StringBuilder sb = new StringBuilder();
         sb.append("<Customer>");
         sb.append("<Uuid>").append(ser.uuid).append("</Uuid>");
         sb.append("<FirstName>").append(ser.firstName).append("</FirstName>");
         sb.append("<LastName>").append(ser.lastName).append("</LastName>");
         sb.append("</Customer>");
-
-        //return sb.toString();
+        return sb.toString();
+        */
 
         try {
             return xmlMapper.writeValueAsString(ser);

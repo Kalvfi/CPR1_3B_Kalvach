@@ -1,4 +1,4 @@
-package org.example.persons.customers.serialization;
+package org.example.serialization;
 
 public interface Serialization {
 

@@ -1,20 +1,20 @@
 package org.example.accounts.services;
 
 import org.example.accounts.BankAccount;
-import org.example.accounts.cards.CardFactory;
-import org.example.accounts.cards.CardStorageService;
-import org.example.accounts.cards.PaymentCard;
+import org.example.cards.factories.CardFactory;
+import org.example.cards.services.CardStorageService;
+import org.example.cards.PaymentCard;
 
 import java.util.List;
 
 public class AccountCardsService {
 
-    CardFactory cf = new CardFactory();
+    CardFactory cardFactory = new CardFactory();
 
     public void addCard(BankAccount bankAccount)
     {
         List<PaymentCard> cards = bankAccount.getCards();
-        PaymentCard card = cf.createPaymentCard(bankAccount.getCustomer().getFullName(),bankAccount);
+        PaymentCard card = cardFactory.createPaymentCard(bankAccount.getCustomer().getFullName(),bankAccount);
         CardStorageService.getAllCards().add(card);
         cards.add(card);
     }

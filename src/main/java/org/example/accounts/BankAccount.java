@@ -1,6 +1,6 @@
 package org.example.accounts;
 
-import org.example.accounts.cards.PaymentCard;
+import org.example.cards.PaymentCard;
 import org.example.persons.customers.Customer;
 
 import java.util.List;
