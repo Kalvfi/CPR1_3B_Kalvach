@@ -18,7 +18,7 @@ public class Logger {
         System.out.println(timestamp() + "Withdrawn " + amount + " from account " + account.getUuid());
     }
     public void logWithdrawal(double amount, PaymentCard card){
-        System.out.println(timestamp() + "Withdrawn " + amount + " using " + card.getCardNumber() + " from account " + card.getBankAccount().getUuid());
+        System.out.println(timestamp() + "Withdrawn " + amount + " using card " + card.getCardNumber() + " from account " + card.getBankAccount().getUuid());
     }
     public void logDeposit(double amount, BaseBankAccount account) {
         System.out.println(timestamp() + "Deposited " + amount + " to account " + account.getUuid());

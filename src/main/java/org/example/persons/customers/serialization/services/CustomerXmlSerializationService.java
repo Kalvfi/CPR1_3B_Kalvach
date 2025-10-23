@@ -9,27 +9,19 @@ import org.example.serialization.Serialization;
 
 public class CustomerXmlSerializationService implements Serialization {
 
-    CustomerSerializationFactory customerSerializationFactory = new CustomerSerializationFactory();
-
+    CustomerSerializationFactory customerSerializationFactory;
     XmlMapper xmlMapper = new XmlMapper();
 
-    @Override
+    public CustomerXmlSerializationService(CustomerSerializationFactory customerSerializationFactory) {
+        this.customerSerializationFactory = customerSerializationFactory;
+    }
+
     public String serialization(Object customer){
         if (!(customer instanceof Customer)) {
             throw new IllegalArgumentException("Not a Customer object");
         }
 
         CustomerSerialization ser = customerSerializationFactory.createCustomerSerialization(((Customer) customer).getUuid(),  ((Customer) customer).getFirstName(), ((Customer) customer).getLastName());
-
-        /*
-        StringBuilder sb = new StringBuilder();
-        sb.append("<Customer>");
-        sb.append("<Uuid>").append(ser.uuid).append("</Uuid>");
-        sb.append("<FirstName>").append(ser.firstName).append("</FirstName>");
-        sb.append("<LastName>").append(ser.lastName).append("</LastName>");
-        sb.append("</Customer>");
-        return sb.toString();
-        */
 
         try {
             return xmlMapper.writeValueAsString(ser);
@@ -38,7 +30,6 @@ public class CustomerXmlSerializationService implements Serialization {
         }
     }
 
-    @Override
     public Customer deserialization(String serialization){
         return xmlMapper.convertValue(serialization, Customer.class);
     }

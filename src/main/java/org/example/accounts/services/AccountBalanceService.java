@@ -5,8 +5,13 @@ import org.example.accounts.BaseBankAccount;
 
 public class AccountBalanceService {
 
-    InputValidationService inputValidationService = new InputValidationService();
-    Logger logger = new Logger();
+    InputValidationService inputValidationService;
+    Logger logger;
+
+    public AccountBalanceService(Logger logger, InputValidationService inputValidationService) {
+        this.logger = logger;
+        this.inputValidationService = inputValidationService;
+    }
 
     public void deposit(BaseBankAccount account, double amount) {
         inputValidationService.checkPositiveAmount(amount);

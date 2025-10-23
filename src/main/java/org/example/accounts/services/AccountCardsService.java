@@ -9,13 +9,19 @@ import java.util.List;
 
 public class AccountCardsService {
 
-    CardFactory cardFactory = new CardFactory();
+    CardFactory cardFactory;
+    CardStorageService cardStorageService;
+
+    public AccountCardsService(CardFactory cardFactory, CardStorageService cardStorageService) {
+        this.cardFactory = cardFactory;
+        this.cardStorageService = cardStorageService;
+    }
 
     public void addCard(BankAccount bankAccount)
     {
         List<PaymentCard> cards = bankAccount.getCards();
         PaymentCard card = cardFactory.createPaymentCard(bankAccount.getCustomer().getFullName(),bankAccount);
-        CardStorageService.getAllCards().add(card);
+        cardStorageService.getAllCards().add(card);
         cards.add(card);
     }
 
@@ -25,7 +31,7 @@ public class AccountCardsService {
         cards.forEach((card)->{
             if (card.getCardNumber().equals(cardNumber))
             {
-                CardStorageService.getAllCards().remove(card);
+                cardStorageService.getAllCards().remove(card);
                 bankAccount.getCards().remove(card);}
         });
     }

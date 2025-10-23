@@ -11,7 +11,11 @@ import java.util.UUID;
 
 public class BankAccountFactory {
 
-    AccountNumberGenerator accountNumberGenerator = new AccountNumberGenerator();
+    AccountNumberGenerator accountNumberGenerator;
+
+    public BankAccountFactory(AccountNumberGenerator accountNumberGenerator) {
+        this.accountNumberGenerator = accountNumberGenerator;
+    }
 
     public BaseBankAccount createBaseBankAccount(Customer customer, double balance) {
         String accountNumber = accountNumberGenerator.generateAccountNumber();

@@ -9,10 +9,17 @@ import org.example.cards.generators.CardPinGenerator;
 
 public class CardFactory {
 
-    CardNumberGenerator cardNumberGenerator = new CardNumberGenerator();
-    CardCvcGenerator cardCvcGenerator = new CardCvcGenerator();
-    CardExpireCalculator cardExpireCalculator = new CardExpireCalculator();
-    CardPinGenerator cardPinGenerator = new CardPinGenerator();
+    CardNumberGenerator cardNumberGenerator;
+    CardCvcGenerator cardCvcGenerator;
+    CardExpireCalculator cardExpireCalculator;
+    CardPinGenerator cardPinGenerator;
+
+    public CardFactory(CardNumberGenerator cardNumberGenerator, CardCvcGenerator cardCvcGenerator, CardExpireCalculator cardExpireCalculator, CardPinGenerator cardPinGenerator) {
+        this.cardNumberGenerator = cardNumberGenerator;
+        this.cardCvcGenerator = cardCvcGenerator;
+        this.cardExpireCalculator = cardExpireCalculator;
+        this.cardPinGenerator = cardPinGenerator;
+    }
 
     public PaymentCard createPaymentCard(String owner, BankAccount account)
     {

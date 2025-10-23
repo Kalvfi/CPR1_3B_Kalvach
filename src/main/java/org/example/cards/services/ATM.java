@@ -8,8 +8,13 @@ import java.util.Scanner;
 
 public class ATM {
 
-    AccountBalanceService accountBalanceService = new AccountBalanceService();
-    Logger logger = new Logger();
+    AccountBalanceService accountBalanceService;
+    Logger logger;
+
+    public ATM(AccountBalanceService accountBalanceService, Logger logger) {
+        this.accountBalanceService = accountBalanceService;
+        this.logger = logger;
+    }
 
     public void withdraw(PaymentCard card, double amount){
 
