@@ -27,6 +27,7 @@ public class BankAccountFactory {
 
         StudentAccount studentAccount = new StudentAccount(uuid, accountNumber, customer, studentOf);
         accountStorageService.getAllBankAccounts().add(studentAccount);
+        customer.getBankAccounts().add(studentAccount);
         return studentAccount;
     }
 
@@ -36,6 +37,7 @@ public class BankAccountFactory {
 
         BankAccount bankAccount = new BankAccount(uuid, accountNumber, customer);
         accountStorageService.getAllBankAccounts().add(bankAccount);
+        customer.getBankAccounts().add(bankAccount);
         return bankAccount;
     }
 
@@ -45,6 +47,7 @@ public class BankAccountFactory {
 
         SaveAccount saveAccount = new SaveAccount(uuid, accountNumber, customer, interestRate);
         accountStorageService.getAllBankAccounts().add(saveAccount);
+        customer.getBankAccounts().add(saveAccount);
         return saveAccount;
     }
 }

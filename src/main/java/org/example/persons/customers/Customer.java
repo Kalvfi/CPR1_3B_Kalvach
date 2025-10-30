@@ -1,10 +1,16 @@
 package org.example.persons.customers;
 
+import org.example.accounts.BaseBankAccount;
+
+import java.util.List;
+
 public class Customer {
 
     private final String uuid;
     private final String firstName;
     private final String lastName;
+
+    private List<BaseBankAccount> bankAccounts;
 
     public Customer(String uuid, String firstName, String lastName) {
         this.uuid = uuid;
@@ -28,4 +34,7 @@ public class Customer {
         return firstName + " " + lastName;
     }
 
+    public List<BaseBankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
 }
