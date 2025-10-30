@@ -1,4 +1,4 @@
-package org.example.serialization;
+package org.example.serializer;
 
 public interface Serialization {
 

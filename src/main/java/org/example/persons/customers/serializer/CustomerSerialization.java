@@ -1,4 +1,4 @@
-package org.example.persons.customers.serialization;
+package org.example.persons.customers.serializer;
 
 public class CustomerSerialization {
 

@@ -23,8 +23,8 @@ public class InterestRunnerFacade {
         accountStorageService.getAllBankAccounts().forEach(account -> {
             if (account instanceof SaveAccount saveAccount && saveAccount.getInterestDate().getTimeInMillis() <= System.currentTimeMillis()){
                 double interest = interestCalculator.calculateInterest(saveAccount);
-                account. setBalance(account.getBalance() + interest);
-                (saveAccount).getInterestDate().add(Calendar.MINUTE, 5);
+                saveAccount.setBalance(account.getBalance() + interest);
+                saveAccount.getInterestDate().add(Calendar.MINUTE, 5);
             }
         });
     }

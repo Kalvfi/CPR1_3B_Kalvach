@@ -1,7 +1,7 @@
-package org.example.persons.customers.serialization.factories;
+package org.example.persons.customers.serializer.factories;
 
 import jakarta.inject.Singleton;
-import org.example.persons.customers.serialization.CustomerSerialization;
+import org.example.persons.customers.serializer.CustomerSerialization;
 
 @Singleton
 public class CustomerSerializationFactory {

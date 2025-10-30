@@ -1,4 +1,4 @@
-package org.example.accounts.crons;
+package org.example.accounts.cron;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;

@@ -3,7 +3,7 @@ package org.example;
 import jakarta.inject.Inject;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
-import org.example.accounts.crons.InterestCronService;
+import org.example.accounts.cron.InterestCronService;
 import org.example.accounts.factories.BankAccountFactory;
 import org.example.accounts.services.AccountBalanceService;
 import org.example.accounts.services.AccountCardsService;
