@@ -1,5 +1,7 @@
 package org.example.accounts.services;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.example.accounts.BankAccount;
 import org.example.cards.factories.CardFactory;
 import org.example.cards.services.CardStorageService;
@@ -7,15 +9,14 @@ import org.example.cards.PaymentCard;
 
 import java.util.List;
 
+@Singleton
 public class AccountCardsService {
 
-    CardFactory cardFactory;
-    CardStorageService cardStorageService;
+    @Inject
+    private CardFactory cardFactory;
 
-    public AccountCardsService(CardFactory cardFactory, CardStorageService cardStorageService) {
-        this.cardFactory = cardFactory;
-        this.cardStorageService = cardStorageService;
-    }
+    @Inject
+    private CardStorageService cardStorageService;
 
     public void addCard(BankAccount bankAccount)
     {

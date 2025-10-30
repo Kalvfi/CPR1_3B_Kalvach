@@ -1,5 +1,8 @@
 package org.example.accounts.services;
 
+import jakarta.inject.Singleton;
+
+@Singleton
 public class InputValidationService {
     public void checkPositiveAmount(double amount){
         if (amount <= 0) throw new IllegalArgumentException("Amount must be positive!");

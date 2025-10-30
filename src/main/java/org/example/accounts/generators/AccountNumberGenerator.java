@@ -1,5 +1,8 @@
 package org.example.accounts.generators;
 
+import jakarta.inject.Singleton;
+
+@Singleton
 public class AccountNumberGenerator {
 
     public String generateAccountNumber() {

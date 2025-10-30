@@ -1,24 +1,27 @@
 package org.example.cards.services;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.example.Logger;
 import org.example.accounts.services.AccountBalanceService;
 import org.example.cards.PaymentCard;
 
 import java.util.Scanner;
 
+@Singleton
 public class ATM {
 
-    AccountBalanceService accountBalanceService;
-    Logger logger;
+    @Inject
+    private AccountBalanceService accountBalanceService;
 
-    public ATM(AccountBalanceService accountBalanceService, Logger logger) {
-        this.accountBalanceService = accountBalanceService;
-        this.logger = logger;
-    }
+    @Inject
+    private Logger logger;
+
+    @Inject
+    Scanner scanner;
 
     public void withdraw(PaymentCard card, double amount){
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter card PIN: ");
         String input = scanner.nextLine();
 
@@ -31,7 +34,7 @@ public class ATM {
     }
 
     public void payOnline(PaymentCard card, double amount){
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter card number: ");
         String cardNumber = scanner.nextLine();
 

@@ -1,10 +1,18 @@
 package org.example.cards.generators;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
+
 import java.util.Scanner;
 
+@Singleton
 public class CardPinGenerator {
+
+    @Inject
+    Scanner scanner;
+
     public String generatePin(){
-        Scanner scanner = new Scanner(System.in);
+
 
         System.out.print("Enter your PIN code (4 digits): ");
         String pin = scanner.nextLine();

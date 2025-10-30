@@ -2,19 +2,20 @@ package org.example.persons.customers.serialization.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.example.persons.customers.Customer;
 import org.example.persons.customers.serialization.CustomerSerialization;
 import org.example.persons.customers.serialization.factories.CustomerSerializationFactory;
 import org.example.serialization.Serialization;
 
+@Singleton
 public class CustomerXmlSerializationService implements Serialization {
 
-    CustomerSerializationFactory customerSerializationFactory;
-    XmlMapper xmlMapper = new XmlMapper();
+    @Inject
+    private CustomerSerializationFactory customerSerializationFactory;
 
-    public CustomerXmlSerializationService(CustomerSerializationFactory customerSerializationFactory) {
-        this.customerSerializationFactory = customerSerializationFactory;
-    }
+    XmlMapper xmlMapper = new XmlMapper();
 
     public String serialization(Object customer){
         if (!(customer instanceof Customer)) {

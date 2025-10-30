@@ -1,17 +1,18 @@
 package org.example.accounts.services;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.example.Logger;
 import org.example.accounts.BaseBankAccount;
 
+@Singleton
 public class AccountBalanceService {
 
-    InputValidationService inputValidationService;
-    Logger logger;
+    @Inject
+    private InputValidationService inputValidationService;
 
-    public AccountBalanceService(Logger logger, InputValidationService inputValidationService) {
-        this.logger = logger;
-        this.inputValidationService = inputValidationService;
-    }
+    @Inject
+    private Logger logger;
 
     public void deposit(BaseBankAccount account, double amount) {
         inputValidationService.checkPositiveAmount(amount);

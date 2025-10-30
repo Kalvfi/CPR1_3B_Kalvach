@@ -1,7 +1,10 @@
 package org.example.cards.generators;
 
+import jakarta.inject.Singleton;
+
 import java.util.Random;
 
+@Singleton
 public class CardExpireCalculator {
     public String generateExpireMonth(){
         Random random = new Random();

@@ -1,11 +1,13 @@
 package org.example;
 
+import jakarta.inject.Singleton;
 import org.example.accounts.BaseBankAccount;
 import org.example.cards.PaymentCard;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Singleton
 public class Logger {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

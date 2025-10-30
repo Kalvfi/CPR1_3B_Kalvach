@@ -1,19 +1,20 @@
 package org.example.persons.customers.serialization.services;
 
 import com.google.gson.Gson;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.example.persons.customers.Customer;
 import org.example.persons.customers.serialization.CustomerSerialization;
 import org.example.persons.customers.serialization.factories.CustomerSerializationFactory;
 import org.example.serialization.Serialization;
 
+@Singleton
 public class CustomerJsonSerializationService implements Serialization {
 
-    CustomerSerializationFactory customerSerializationFactory;
-    Gson gson = new Gson();
+    @Inject
+    private CustomerSerializationFactory customerSerializationFactory;
 
-    public CustomerJsonSerializationService(CustomerSerializationFactory customerSerializationFactory) {
-        this.customerSerializationFactory = customerSerializationFactory;
-    }
+    Gson gson = new Gson();
 
     public String serialization(Object customer){
         if (!(customer instanceof Customer)) {
