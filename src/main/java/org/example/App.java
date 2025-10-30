@@ -1,7 +1,9 @@
 package org.example;
 
 import jakarta.inject.Inject;
+import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
+import org.example.accounts.crons.InterestCronService;
 import org.example.accounts.factories.BankAccountFactory;
 import org.example.accounts.services.AccountBalanceService;
 import org.example.accounts.services.AccountCardsService;
@@ -29,6 +31,9 @@ public class App {
 
     @Inject
     private CardStorageService cardStorageService;
+
+    @Inject
+    private InterestCronService interestCronService;
 
     public void run(){
 
@@ -58,5 +63,9 @@ public class App {
         System.out.println(cardStorageService.getAllCards().getFirst().getBankAccount().getCustomer().getFullName());
 
         cardStorageService.getAllCards().forEach(card -> System.out.println(card.getCardNumber()));
+
+        SaveAccount saveAccount = bankAccountFactory.createSaveAccount(customer, 0.05f);
+
+        interestCronService.start();
     }
 }
