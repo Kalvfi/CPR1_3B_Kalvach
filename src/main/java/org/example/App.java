@@ -5,10 +5,11 @@ import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.cron.InterestCronService;
 import org.example.accounts.factories.BankAccountFactory;
-import org.example.accounts.services.AccountBalanceService;
+import org.example.accounts.services.AccountTransferService;
 import org.example.accounts.services.AccountCardsService;
 import org.example.cards.services.ATM;
 import org.example.cards.services.CardStorageService;
+import org.example.entries.cron.AccountTransferEntryCronService;
 import org.example.persons.customers.Customer;
 import org.example.persons.customers.factories.CustomerFactory;
 
@@ -21,7 +22,7 @@ public class App {
     private BankAccountFactory bankAccountFactory;
 
     @Inject
-    private AccountBalanceService accountBalanceService;
+    private AccountTransferService accountTransferService;
 
     @Inject
     private AccountCardsService accountCardsService;
@@ -34,6 +35,9 @@ public class App {
 
     @Inject
     private InterestCronService interestCronService;
+
+    @Inject
+    private AccountTransferEntryCronService accountTransferEntryCronService;
 
     public void run(){
 
@@ -49,7 +53,7 @@ public class App {
         System.out.println("Balance: " + account.getBalance());
         System.out.println("Student of: " + account.getStudentOf());
 
-        accountBalanceService.deposit(account, 5000);
+        accountTransferService.deposit(account, 5000);
 
         System.out.println("\nBalance after adding: " + account.getBalance());
 
@@ -66,6 +70,9 @@ public class App {
 
         SaveAccount saveAccount = bankAccountFactory.createSaveAccount(customer, 0.05f);
 
+        accountTransferService.deposit(saveAccount, 5000);
+
         interestCronService.start();
+        accountTransferEntryCronService.start();
     }
 }

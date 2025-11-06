@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.services.AccountStorageService;
-import org.example.accounts.services.InterestCalculator;
+import org.example.accounts.services.AccountTransferService;
 
 import java.util.Calendar;
 
@@ -16,15 +16,14 @@ public class InterestRunnerFacade {
     private AccountStorageService accountStorageService;
 
     @Inject
-    private InterestCalculator interestCalculator;
+    AccountTransferService accountTransferService;
 
     public void processAllInterests()
     {
         accountStorageService.getAllBankAccounts().forEach(account -> {
             if (account instanceof SaveAccount saveAccount && saveAccount.getInterestDate().getTimeInMillis() <= System.currentTimeMillis()){
-                double interest = interestCalculator.calculateInterest(saveAccount);
-                saveAccount.setBalance(account.getBalance() + interest);
-                saveAccount.getInterestDate().add(Calendar.MINUTE, 5);
+                accountTransferService.interest(saveAccount);
+                saveAccount.getInterestDate().add(Calendar.SECOND, 50);
             }
         });
     }

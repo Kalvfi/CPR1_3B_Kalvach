@@ -2,6 +2,7 @@ package org.example.persons.customers;
 
 import org.example.accounts.BaseBankAccount;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
@@ -10,7 +11,7 @@ public class Customer {
     private final String firstName;
     private final String lastName;
 
-    private List<BaseBankAccount> bankAccounts;
+    private List<BaseBankAccount> bankAccounts =  new ArrayList<BaseBankAccount>();
 
     public Customer(String uuid, String firstName, String lastName) {
         this.uuid = uuid;

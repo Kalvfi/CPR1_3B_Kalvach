@@ -20,8 +20,8 @@ public class InterestCronService {
         scheduler.scheduleAtFixedRate(
                 interestRunnerFacade::processAllInterests,
                 0,
-                1,
-                TimeUnit.MINUTES
+                10,
+                TimeUnit.SECONDS
         );
     }
 }

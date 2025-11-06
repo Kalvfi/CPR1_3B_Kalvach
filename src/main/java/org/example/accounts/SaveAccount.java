@@ -13,7 +13,7 @@ public class SaveAccount extends BaseBankAccount{
         super(uuid, bankAccountNumber, customer, 0);
         this.interestRate = interestRate;
         Calendar interestDate = Calendar.getInstance();
-        interestDate.add(Calendar.MINUTE, 5);
+        interestDate.add(Calendar.SECOND, 50);
         this.interestDate = interestDate;
     }
 

@@ -14,7 +14,8 @@ public class CustomerJsonSerializationService implements Serialization {
     @Inject
     private CustomerSerializationFactory customerSerializationFactory;
 
-    Gson gson = new Gson();
+    @Inject
+    Gson gson;
 
     @Override
     public String serialization(Object customer){
@@ -29,7 +30,6 @@ public class CustomerJsonSerializationService implements Serialization {
 
     @Override
     public Customer deserialization(String serialization){
-
        return gson.fromJson(serialization, Customer.class);
     }
 }

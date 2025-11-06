@@ -3,7 +3,7 @@ package org.example.cards.services;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.example.Logger;
-import org.example.accounts.services.AccountBalanceService;
+import org.example.accounts.services.AccountTransferService;
 import org.example.cards.PaymentCard;
 
 import java.util.Scanner;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ATM {
 
     @Inject
-    private AccountBalanceService accountBalanceService;
+    private AccountTransferService accountTransferService;
 
     @Inject
     private Logger logger;
@@ -29,8 +29,7 @@ public class ATM {
             throw new IllegalArgumentException("Wrong pin");
         }
 
-        accountBalanceService.withdraw(card.getBankAccount(), amount);
-        logger.logWithdrawal(amount, card);
+        accountTransferService.withdraw(card.getBankAccount(), amount);
     }
 
     public void payOnline(PaymentCard card, double amount){
@@ -51,7 +50,6 @@ public class ATM {
             throw new IllegalArgumentException("Wrong card information");
         }
 
-        accountBalanceService.withdraw(card.getBankAccount(), amount);
-        logger.logPayment(amount, card);
+        accountTransferService.withdraw(card.getBankAccount(), amount);
     }
 }

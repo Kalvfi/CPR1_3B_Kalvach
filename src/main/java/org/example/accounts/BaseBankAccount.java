@@ -1,6 +1,10 @@
 package org.example.accounts;
 
 import org.example.persons.customers.Customer;
+import org.example.entries.AccountTransferEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseBankAccount {
 
@@ -12,11 +16,14 @@ public class BaseBankAccount {
 
     private double balance;
 
+    private List<AccountTransferEntry> accountTransferEntries;
+
     public BaseBankAccount(String uuid, String bankAccountNumber, Customer customer, double balance) {
         this.uuid = uuid;
         this.bankAccountNumber = bankAccountNumber;
         this.customer = customer;
         this.balance = balance;
+        this.accountTransferEntries = new ArrayList<AccountTransferEntry>();
     }
 
     public String getUuid() {
@@ -37,5 +44,9 @@ public class BaseBankAccount {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public List<AccountTransferEntry> getAccountTransferEntries() {
+        return accountTransferEntries;
     }
 }
